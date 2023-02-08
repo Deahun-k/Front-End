@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>오징어</li>
+        <li>꼴뚜기</li>
+        <li>대구</li>
+        <li>명태</li>
+        <li>거북이</li>
+    </ul>
+
+    <script>
+        // 자바 스크립트에는 char타입이 없다.
+        // 홀따옴표 쌍따옴표 모두 문자열로 사용된다.
+
+        var colors = ['red','green','blue','orange','pink'];
+        var lis = document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+        console.dir(lis);
+        for(var i=0; i<lis.length; i++) {
+            //console.log(lis[i]);
+            //각각의 li 요소의 colors의 색상을 적용 시켜라.
+            //lis[i].style.backgroundColor = colors[i];
+            lis[i].i = i;
+            lis[i].onclick = function(events){
+                console.log(this.i);
+                //event.target.style.backgroundColor = colors[i];
+                this.style.backgroundColor = colors[this.i];
+            }
+        }
+        // 이미 i는 0~5까지 반복되었다.
+        // 그런 후에 event가 발생한다.
+    </script>
+
+</body>
+</html>

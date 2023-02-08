@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsDay02Homework.html</title>
+    <style>
+        div.gameBox {
+            border: 1px solid orange;
+            width : 308px;
+            height: 108px;
+            line-height: 102px;
+            overflow: hidden;
+        }
+        div.gameBox ul {
+            margin: 0;
+            padding: 0px;
+            float: left;
+        }
+        div.gameBox li {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            list-style: none;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>빠칭코</h1>
+    <p><button id="playBtn">Play</button></p>
+    <div class="gameBox"></div>
+
+    <script>
+        function MakeUl(gameBox) {
+            this.SIZE = 5;
+            this.init = function() {
+                let colors = ['orange','blue','pink','yellowgreen','green'];
+                this.ulTag = document.createElement("ul");
+                for(var i=1; i<=this.SIZE;  i++) {
+                    var li = document.createElement("li");
+                    li.innerText = Math.abs(Math.floor(Math.random()*(10)));
+                    this.ulTag.appendChild(li);
+                }
+                gameBox.appendChild(this.ulTag);
+
+                // 게임 실행
+                this.play();
+                return this;
+            }
+
+            this.play = function() {
+                this.ulTag.style.position = "relative";
+                var y = 0;
+                var stop = Math.abs(Math.floor(Math.random()*5 ));
+                var speed = Math.abs(Math.floor(Math.random()*30 )+10 );
+                var cnt = 0;
+
+                var refInterval = setInterval(() => {
+                    y -= 10;
+                    if(y <= -1000) {
+                        y = 0;
+                        if(cnt >= stop) {
+                            clearTimeout(refInterval);
+                        }
+                        cnt++;
+                    }
+                    this.ulTag.style.top = y + "px";
+                }, speed);
+            }
+        }
+
+        var gameBox = document.querySelector(".gameBox");
+        var ul01 = new MakeUl(gameBox).init();
+        var ul02 = new MakeUl(gameBox).init();
+        var ul03 = new MakeUl(gameBox).init();
+
+        var playBtn = document.getElementById("playBtn");
+            playBtn.addEventListener('click', (event) => {
+            console.log("click play btn")
+            ul01.play();
+            ul02.play();
+            ul03.play();
+        });
+    </script>
+</body>
+</html>

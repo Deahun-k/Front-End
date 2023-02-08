@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 959px) {
+            body {
+                background-color: aqua;
+                padding: 3px;
+                margin : 3px;
+                border: 1px solid red;
+                border-radius: 7px;
+                width: 100px;
+                overflow: hidden;
+            }
+        }
+        @media screen and (min-width: 960px) {
+            div.container div {
+                padding: 3px;
+                margin : 3px;
+                border: 1px solid red;
+                border-radius: 7px;
+                width: 900px;
+                overflow: hidden;
+            }
+            .header > h1 {
+                text-align: center;
+            }
+
+            .header nav li {
+             float: left;
+                width: 178px;
+                height: 50px;
+                list-style: none;
+                border-top: 1px solid red;
+                border-bottom: 1px gray;
+                text-align: center;
+            }
+
+            div.middle  div {
+                width: 150px;
+                float: left;
+                height: 200px;
+            }
+            div.middle div.left  div {
+                width: 135px;
+                float: left;
+                height: 20px;
+            }
+            div.middle div.right  div {
+                width: 135px;
+                float: left;
+                height: 50px;
+            }
+            div.middle div.right  div:nth-child(2) {
+                width: 135px;
+                height: 120px;
+            }
+            div.middle div.center {
+                width: 550px;
+            }
+            div.footer {
+                clear: both;
+                height: 80px;
+            }
+            div.center > div {
+                height: 80px;
+                width: 260px;
+            }
+            div.center div:nth-child(1) {
+                height: 30px;
+                width: 530px; 
+            }
+            div.center div:nth-child(2) {
+                height: 30px;
+                width: 530px; 
+            }
+            div.center div:nth-child(3) {
+                height: 30px;
+                width: 530px; 
+            }
+            div.center div:nth-child(4) {
+                height: 30px;
+                width: 530px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>페이지</h1>
+            <nav>
+                <ul>
+                    <li>HOME</li>
+                    <li>PROFILE</li>
+                    <li>GALLERY</li>
+                    <li>LECTURE</li>
+                    <li>BOARD</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+            </div>
+            <div class="center">
+                <div>banner</div>
+                <div>section1</div>
+                <div>section2</div>
+                <div>section3</div>
+            </div>
+            <div class="right">
+                <div>1</div>
+                <div>2</div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>
