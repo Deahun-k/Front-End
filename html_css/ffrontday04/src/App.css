@@ -1,3 +1,6 @@
 input[disabled] {
-    border: 1px solid white;
+    border: 1px; background-color: white;
+}
+input[disabled].check {
+    text-decoration: line-through;
 }

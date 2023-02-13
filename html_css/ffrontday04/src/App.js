@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "./App.css";
 
-function ItemRow({ item, removeItem }) {
+function ItemRow({ item, removeItem, setCheckBox }) {
+  // const [checkBoxs, setCheckBox] = useState(false)
   return (
     <li>
       <p>
-        <input type="checkbox" />
-        <input type="text" value={item.title} disabled />
+        <input
+          type="checkbox"
+          onChange={(e) => {
+            setCheckBox(item.no, item.done);
+            console.log(item.no, item.done);
+          }}
+        />
+        <input type="text" value={item.title} disabled className={` ${item.done ? 'check' : ''}`}/>
+        
+        
         <button
           onClick={(e) => {
             removeItem(item.no);
@@ -44,12 +53,12 @@ function InputItem({ appendItem }) {
 }
 
 // Redux를 이용하면 해결된다.
-function TodoList({ todoList, removeItem }) {
+function TodoList({ todoList, removeItem, setCheckBox }) {
   return (
     <div>
       <ul>
         {todoList.map((item, idx) => {
-          return <ItemRow key={item.no} item={item} removeItem={removeItem} />;
+          return <ItemRow key={item.no} item={item} removeItem={removeItem} setCheckBox={setCheckBox} />;
         })}
       </ul>
     </div>
@@ -78,12 +87,24 @@ function App(props) {
     });
     setTodoList(newList);
   }
+
+  function setCheckBox(no, done) {
+    var newDone = !done;
+    console.log(newDone);
+    setTodoList(
+      todoList.map((todoList) => {
+        return todoList.no === no
+        ?{ ...todoList, done: newDone }
+        : todoList
+      }));
+  }
+
   return (
     <>
       <h1>Todo List</h1>
       <InputItem appendItem={appendItem} />
       <hr />
-      <TodoList todoList={todoList} removeItem={removeItem} />
+      <TodoList todoList={todoList} removeItem={removeItem} setCheckBox={setCheckBox} />
     </>
   );
 }
