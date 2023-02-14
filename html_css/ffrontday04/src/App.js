@@ -19,6 +19,17 @@ function ItemRow({ item, removeItem }) {
   );
 }
 
+const onToggle = useCallback(       // toggle 기능 만들기
+  id => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, checked: !todo.checked } :todo,
+        ),
+    );
+  },
+  [todos],
+);
+
 function InputItem({ appendItem }) {
   // input의 value로 사용 할 경우 초기값 필수.
   const [newWork, setNewWork] = useState("");
